@@ -6,6 +6,10 @@ body {
   background-color: blue;
 } */
 
+#red {
+  color: red;
+}
+
 @media screen and (max-width: 600px) {
   .input-form {
     display: flex;
