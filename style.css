@@ -31,9 +31,7 @@ body {
   font-size: large;
   background: #3498db;
 }
-#post-submit {
-  /* display: none; */
-}
+
 #descrip {
   font-weight: bold;
 }
@@ -45,6 +43,9 @@ body {
   font-weight: bold;
 }
 
+#hide {
+  display: none;
+}
 .minisearchbutton {
   display: none;
 }

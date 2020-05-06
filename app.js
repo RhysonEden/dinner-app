@@ -62,22 +62,17 @@ $("#display-meals").on("click", function (event) {
   event.preventDefault();
   console.log(meal);
   main.empty();
-  // for (var key in meal) {
-  //   main.append(`<div id="mealdisplay>${key}</div><br>`);
-  // }
 
-  for (index = 0; index < meal.length; index++) {
-    console.log(meal[index]);
-    main.append(`<div id="mealdisplay>${meal}</div><br>`);
+  meal.forEach(Function1);
+
+  function Function1(currentValue, index) {
+    console.log(
+      "Array Current Index is: " + index + " :: Value is: " + currentValue
+    );
+    main.append(
+      `<div id="meals">${currentValue}<div id="hide">${index}</div></div>`
+    );
   }
-  // meal.forEach(function () {
-  //   console.log(meal);
-  //   main.empty();
-  //   main.append(`<div id="mealdisplay>Test</div><br>`);
-  // userList.forEach(function (user) {
-  //   $("#user-list").append(renderUser(user));
-  // });
-  // });
 });
 
 $("#messagesend").on("click", function (event) {
