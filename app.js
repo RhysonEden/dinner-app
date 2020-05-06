@@ -48,7 +48,7 @@ function shuffle(array) {
 $("#clearall").on("click", function (event) {
   event.preventDefault();
   let r = confirm(
-    "Press ok to Clear Everthing, or cancel to keep current settings"
+    "Press ok to clear everthing, or cancel to keep current settings"
   );
 
   if (r === true) {
