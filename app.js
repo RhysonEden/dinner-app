@@ -1,4 +1,4 @@
-let meals = [];
+let meals = JSON.parse(localStorage.getItem("meals"));
 
 let defaultz = [
   "Tacos",
@@ -28,7 +28,6 @@ $("#load-defaults").on("click", function (event) {
 });
 
 function shuffle(array) {
-  console.log("fired");
   let currentIndex = meal.length,
     temporaryValue,
     randomIndex;
@@ -41,7 +40,6 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-  console.log("completed");
   return array;
 }
 
@@ -60,6 +58,28 @@ $(".clearall").on("click", function (event) {
   }
 });
 
+$("#display-meals").on("click", function (event) {
+  event.preventDefault();
+  console.log(meal);
+  main.empty();
+  // for (var key in meal) {
+  //   main.append(`<div id="mealdisplay>${key}</div><br>`);
+  // }
+
+  for (index = 0; index < meal.length; index++) {
+    console.log(meal[index]);
+    main.append(`<div id="mealdisplay>${meal}</div><br>`);
+  }
+  // meal.forEach(function () {
+  //   console.log(meal);
+  //   main.empty();
+  //   main.append(`<div id="mealdisplay>Test</div><br>`);
+  // userList.forEach(function (user) {
+  //   $("#user-list").append(renderUser(user));
+  // });
+  // });
+});
+
 $("#messagesend").on("click", function (event) {
   event.preventDefault();
   let newMeal = $("#input-message").val();
@@ -74,9 +94,11 @@ $("#random").on("click", function (event) {
   retrieveData();
   x = meal;
   main.empty();
-  shuffle(meal);
+  shuffle(x);
+  console.log(x);
   main.append(
-    `<div class="display"><div id="d1">Dinner Day 1 = ${x[0]}<br></div>
+    `<div class="display"><div id="d1">
+           Dinner Day 1 = ${x[0]} <br></div>
      <div id="d2">Dinner Day 2 = ${x[1]}<br></div>
      <div id="d3">Dinner Day 3 = ${x[2]}<br></div>
      <div id="d4">Dinner Day 4 = ${x[3]}<br></div>
