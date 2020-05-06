@@ -47,8 +47,17 @@ function shuffle(array) {
 
 $("#clearall").on("click", function (event) {
   event.preventDefault();
-  localStorage.clear();
-  location.reload();
+  let r = confirm(
+    "Press ok to Clear Everthing, or cancel to keep current settings"
+  );
+
+  if (r === true) {
+    txt = "Clearing Everything";
+    localStorage.clear();
+    location.reload();
+  } else {
+    txt = "Cancel";
+  }
 });
 
 $("#messagesend").on("click", function (event) {
