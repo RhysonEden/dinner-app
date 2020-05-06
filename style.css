@@ -10,7 +10,7 @@ body {
   color: red;
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .input-form {
     display: flex;
     flex-wrap: wrap;
@@ -20,4 +20,302 @@ body {
   #input-message {
     border: 1px solid black;
   }
+} */
+
+/* Paste of CSS */
+body {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: auto;
+  grid-gap: 1em;
+  font-size: large;
+  background: #3498db;
+}
+#post-submit {
+  /* display: none; */
+}
+#descrip {
+  font-weight: bold;
+}
+.minisearch {
+  display: none;
+}
+
+#title {
+  font-weight: bold;
+}
+
+.minisearchbutton {
+  display: none;
+}
+.loggedInAds,
+.ads {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 300px;
+  font-weight: lighter;
+  border: 1px solid black;
+  background: white;
+  width: 80%;
+  text-align: center;
+}
+.edit {
+  background-color: green;
+}
+.delete {
+  background-color: red;
+}
+.loggedInAds {
+  /* display: none; */
+  height: auto;
+  width: 200px;
+}
+.post {
+  display: flex;
+  flex-direction: column;
+}
+.search {
+  display: flex;
+  align-items: center;
+  /* margin-left: 1200px; */
+  height: 25px;
+  height: 100%;
+}
+
+.header {
+  height: 22px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: scroll;
+  height: 675px;
+  max-height: 90vh;
+  /* margin-top: 100px; */
+  /* padding-top: 500px; */
+}
+
+.header,
+.footer,
+.user-interface {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  background: #3498db;
+}
+
+header,
+footer,
+.user-interface {
+  grid-column: 1 / span 2;
+}
+
+.small {
+  display: none;
+}
+
+.large {
+  background: #3498db;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  margin: 0 auto;
+  padding: 1em 0;
+}
+
+main,
+header,
+footer {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  background: #3498db;
+}
+.user-interface {
+  display: flex;
+  flex-direction: row;
+  background: #3498db;
+}
+
+#clearallbottom {
+  display: none;
+}
+
+.display {
+  border: 1px solid black;
+}
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .display {
+    border: none;
+  }
+  #clearallbottom {
+    display: flex;
+  }
+
+  button {
+    border: 1px solid black;
+  }
+
+  #clearalltop {
+    display: none;
+  }
+
+  header {
+    display: none;
+  }
+
+  footer {
+    height: 75px;
+    align-content: center;
+    justify-content: center;
+  }
+
+  main {
+    height: 100%;
+  }
+
+  .small {
+    height: 50px;
+    display: flex;
+    background: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background: #3498db;
+  }
+  .searchbutton {
+    display: none;
+  }
+  .minisearch {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .minisearchbutton {
+    width: 100%;
+    display: flex;
+    background: white;
+    border: 1px solid black;
+  }
+  .search {
+    display: none;
+  }
+
+  .large {
+    display: flex;
+  }
+}
+.messages {
+  display: none;
+}
+.messages {
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 187px;
+  font-weight: lighter;
+  border: 1px solid black;
+  background: white;
+  width: 200px;
+  text-align: center;
+}
+.messagehide,
+.hide,
+.hidet {
+  display: none;
+}
+
+.message {
+  display: none;
+  color: white;
+  height: 18px;
+  border: 1px solid white;
+  background-color: #3498db;
+}
+#startingtext {
+  color: white;
+  display: flex;
+  position: absolute;
+  right: 800px;
+  background-color: #3498db;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #34495e;
+}
+
+.box {
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #191919;
+  text-align: center;
+}
+.box h1 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.box input[type="text"],
+.box input[type="password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+  width: 280px;
+  border-color: #2ecc71;
+}
+
+#logbutton {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 45px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+button:hover,
+.message:hover,
+#logbutton:hover {
+  background: #2ecc71;
 }

@@ -17,7 +17,7 @@ let defaultz = [
   "Pot Roast",
 ];
 
-let main = $(".main");
+let main = $(".main-list");
 
 $("#load-defaults").on("click", function (event) {
   event.preventDefault();
@@ -45,7 +45,7 @@ function shuffle(array) {
   return array;
 }
 
-$("#clearall").on("click", function (event) {
+$(".clearall").on("click", function (event) {
   event.preventDefault();
   let r = confirm(
     "Press ok to clear everthing, or cancel to keep current settings"
@@ -76,13 +76,13 @@ $("#random").on("click", function (event) {
   main.empty();
   shuffle(meal);
   main.append(
-    `<div id="d1">Dinner Day 1 = ${x[0]}<br></div>
+    `<div class="display"><div id="d1">Dinner Day 1 = ${x[0]}<br></div>
      <div id="d2">Dinner Day 2 = ${x[1]}<br></div>
      <div id="d3">Dinner Day 3 = ${x[2]}<br></div>
      <div id="d4">Dinner Day 4 = ${x[3]}<br></div>
      <div id="d5">Dinner Day 5 = ${x[4]}<br></div>
      <div id="d6">Dinner Day 6 = ${x[5]}<br></div>
-     <div id="d7">Dinner Day 7 = ${x[6]}</div> `
+     <div id="d7">Dinner Day 7 = ${x[6]}</div></div> `
   );
 });
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script defer src="app.js"></script>
+    <title>DINNER!</title>
+  </head>
+  <body>
+    <div class="input-main">
+      <form class="input-form" method="post" action="#">
+        <h4 class="name"></h4>
+        <label>Meal Name:</label>
+        <input type="text" name="mname" id="input-message" />
+        <button id="messagesend">Enter</button>
+        <button id="random">Random</button>
+        <button id="load-defaults">Load Default Meals</button>
+        <div class="main">
+        <p id="directions"><h4>
+          By default no meals are preloaded<br />
+          Add your own by entering meal name in field<br />
+          or preload 14 default meals by using the default button<br />
+          <p id="red">WARNING!! CLEAR EVERYTHING BUTTON WILL REMOVE ALL, EVEN YOUR CUSTOM
+          MEALS</p><br />
+          </h4></div>
+        </h4></p>
+        <button id="clearall">Clear Everything</button>
+      </form>
+    </div>
+  </body>
+</html>
