@@ -1,4 +1,23 @@
-let meals = JSON.parse(localStorage.getItem("meals"));
+let mealJson = JSON.parse(localStorage.getItem("meals"));
+
+let meals = [];
+
+let meal = [
+  "Tacos",
+  "Perogies",
+  "Cheese Hamburger Helper",
+  "Mac and Cheese",
+  "Steak",
+  "Hamburgers",
+  "Pork Chops",
+  "Pizza",
+  "Beer Braised Chicken",
+  "Breakfast for Dinner",
+  "Grilled Pork Tenderloin",
+  "Spaghetti Carbonara",
+  "Meatloaf",
+  "Pot Roast",
+];
 
 let defaultz = [
   "Tacos",
@@ -61,18 +80,22 @@ $(".clearall").on("click", function (event) {
 $("#display-meals").on("click", function (event) {
   event.preventDefault();
   console.log(meal);
+  mealShow();
   main.empty();
-
   meal.forEach(Function1);
-
   function Function1(currentValue, index) {
-    console.log(
-      "Array Current Index is: " + index + " :: Value is: " + currentValue
-    );
     main.append(
-      `<div id="meals">${currentValue}<div id="hide">${index}</div></div>`
+      `<div id="meals"><u>${
+        1 + index
+      }.  ${currentValue}<div id="hide">${index}</div></u></div>`
     );
   }
+});
+
+$(document).ready(function () {
+  $("#deletemeal").on("click", function () {
+    console.log("deleted click");
+  });
 });
 
 $("#messagesend").on("click", function (event) {
@@ -102,6 +125,16 @@ $("#random").on("click", function (event) {
      <div id="d7">Dinner Day 7 = ${x[6]}</div></div> `
   );
 });
+
+function mealShow() {
+  $(".mealhide").show();
+  $("#random").hide();
+}
+
+function randomShow() {
+  $(".mealhide").hide();
+  $("#random").show();
+}
 
 function storeData() {
   localStorage.setItem("meals", JSON.stringify(meal));

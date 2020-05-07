@@ -6,6 +6,10 @@ body {
   background-color: blue;
 } */
 
+#deletemeal {
+  display: hide;
+}
+
 #red {
   color: white;
 }
@@ -237,6 +241,7 @@ footer {
   width: 200px;
   text-align: center;
 }
+.mealhide,
 .messagehide,
 .hide,
 .hidet {
