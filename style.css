@@ -241,6 +241,11 @@ footer {
   width: 200px;
   text-align: center;
 }
+
+.mealshow {
+  display: flex;
+}
+
 .mealhide,
 .messagehide,
 .hide,

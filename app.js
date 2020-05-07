@@ -62,6 +62,9 @@ function shuffle(array) {
   return array;
 }
 
+$("#canceldelete").on("click", function () {
+  location.reload();
+});
 $(".clearall").on("click", function (event) {
   event.preventDefault();
   let r = confirm(
@@ -127,7 +130,8 @@ $("#random").on("click", function (event) {
 });
 
 function mealShow() {
-  $(".mealhide").show();
+  $(".mealhide").removeClass("mealhide");
+  $(".mealhide").addClass("mealshow");
   $("#random").hide();
 }
 
