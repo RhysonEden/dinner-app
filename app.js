@@ -85,7 +85,6 @@ $(".clearall").on("click", function (event) {
 
 $("#display-meals").on("click", function (event) {
   event.preventDefault();
-  console.log(meal);
   mealShow();
   main.empty();
   meal.forEach(Function1);
@@ -101,16 +100,12 @@ function Function1(currentValue, index) {
 
 $(document).ready(function () {
   $("#deletemeal").on("click", function () {
-    console.log("deleted click");
     if (confirm("Are you sure to delete selected meal?")) {
       $(":checkbox").each(function () {
         let that = $(this);
         if (that.is(":checked")) {
-          // let obj = that.closest("#hide");
           let obj = $(this).closest("#meals").find("#hide").text();
-          console.log(obj)
           let idx = obj;
-          console.log("test", idx);
           meal.splice(idx, 1);
           main.empty();
           meal.forEach(Function1);
@@ -137,7 +132,6 @@ $("#random").on("click", function (event) {
   x = meal;
   main.empty();
   shuffle(x);
-  console.log(x);
   if (`${x[0]}` === "undefined"){
     main.append(`<div class="display">No meals entered, please enter a meal or load default meals</div>`)
   } else {
