@@ -1,5 +1,7 @@
 let mealJson = JSON.parse(localStorage.getItem("meals"));
 
+let index = [];
+
 let meals = [];
 
 let meal = [
@@ -65,6 +67,7 @@ function shuffle(array) {
 $("#canceldelete").on("click", function () {
   location.reload();
 });
+
 $(".clearall").on("click", function (event) {
   event.preventDefault();
   let r = confirm(
@@ -86,20 +89,38 @@ $("#display-meals").on("click", function (event) {
   mealShow();
   main.empty();
   meal.forEach(Function1);
-  function Function1(currentValue, index) {
-    main.append(
-      `<div id="meals"><u>${
-        1 + index
-      }.  ${currentValue}<div id="hide">${index}</div></u></div>`
-    );
-  }
 });
+
+function Function1(currentValue, index) {
+  main.append(
+    `<div id="meals"><input type="checkbox"><u>${
+      1 + index
+    }.  ${currentValue}<div id="hide">${index}</div></u></div>`
+  );
+}
 
 $(document).ready(function () {
   $("#deletemeal").on("click", function () {
     console.log("deleted click");
+    if (confirm("Are you sure to delete selected list?")) {
+      $(":checkbox").each(function () {
+        let that = $(this);
+        if (that.is(":checked")) {
+          // let obj = that.closest("#hide");
+          let obj = $(this).closest("#meals").find("#hide").text();
+          console.log(obj)
+          let idx = obj;
+          console.log("test", idx);
+          meal.splice(idx, 1);
+          main.empty();
+          meal.forEach(Function1);
+        }
+      });
+    }
   });
 });
+
+//testing code
 
 $("#messagesend").on("click", function (event) {
   event.preventDefault();
@@ -133,11 +154,6 @@ function mealShow() {
   $(".mealhide").removeClass("mealhide");
   $(".mealhide").addClass("mealshow");
   $("#random").hide();
-}
-
-function randomShow() {
-  $(".mealhide").hide();
-  $("#random").show();
 }
 
 function storeData() {
