@@ -138,6 +138,9 @@ $("#random").on("click", function (event) {
   main.empty();
   shuffle(x);
   console.log(x);
+  if (`${x[0]}` === "undefined"){
+    main.append(`<div class="display">No meals entered, please enter a meal or load default meals</div>`)
+  } else {
   main.append(
     `<div class="display"><div id="d1">
            Dinner Day 1 = ${x[0]} <br></div>
@@ -147,7 +150,7 @@ $("#random").on("click", function (event) {
      <div id="d5">Dinner Day 5 = ${x[4]}<br></div>
      <div id="d6">Dinner Day 6 = ${x[5]}<br></div>
      <div id="d7">Dinner Day 7 = ${x[6]}</div></div> `
-  );
+  )};
 });
 
 function mealShow() {
