@@ -102,7 +102,7 @@ function Function1(currentValue, index) {
 $(document).ready(function () {
   $("#deletemeal").on("click", function () {
     console.log("deleted click");
-    if (confirm("Are you sure to delete selected list?")) {
+    if (confirm("Are you sure to delete selected meal?")) {
       $(":checkbox").each(function () {
         let that = $(this);
         if (that.is(":checked")) {
