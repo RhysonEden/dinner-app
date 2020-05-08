@@ -42,7 +42,9 @@ body {
 .minisearch {
   display: none;
 }
-
+#clearalltop {
+  display:none;
+}
 #title {
   font-weight: bold;
 }

@@ -150,6 +150,7 @@ $("#random").on("click", function (event) {
 function mealShow() {
   $(".mealhide").removeClass("mealhide");
   $(".mealhide").addClass("mealshow");
+  $("#clearalltop").show();
   $("#random").hide();
 }
 
