@@ -65,7 +65,8 @@ function shuffle(array) {
 }
 
 $("#canceldelete").on("click", function () {
-  location.reload();
+  main.empty();
+  mealHide();
 });
 
 $(".clearall").on("click", function (event) {
@@ -151,9 +152,19 @@ function mealShow() {
   $(".mealhide").removeClass("mealhide");
   $(".mealhide").addClass("mealshow");
   $("#clearalltop").show();
+  $("#deletemeal").show()
+  $("#canceldelete").show();
   $("#random").hide();
 }
 
+function mealHide(){
+  $(".mealhide").removeClass("mealshow")
+  $(".mealhide").addClass("mealhide")
+  $("#deletemeal").hide()
+  $("#clearalltop").hide();
+  $("#canceldelete").hide();
+  $("#random").show();
+}
 function storeData() {
   localStorage.setItem("meals", JSON.stringify(meal));
 }
