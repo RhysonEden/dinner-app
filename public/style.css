@@ -2,13 +2,6 @@ h4 {
   text-align: center;
 }
 
-#deletemeal {
-  display: hide;
-}
-
-
-
-
 /* Paste of CSS */
 body {
   display: grid;
@@ -154,20 +147,6 @@ footer {
   display: none;
 }
 
-.buttons,
-#mealhide,
-#deletemeal,
-#canceldelete {
-  border-radius: 2em;
-  border: 1px solid black;
-  background-color: white;
-  padding:0.3em 1.2em;
-  margin: 0 0.3em 0.3em 0;
-  position: relative;
-  animation:bouncy 5s infinite linear;
-}
-
-
 @keyframes bouncy {
   0%{top:0em}
   40%{top:0em}
@@ -175,17 +154,57 @@ footer {
   46%{top:0em}
   48%{top:-0.4em}
   50%{top:0em}
+  75%{top:-1.2em}
+  78%{top:0em}
   100%{top:0em}
 }
-/* @keyframes bouncy {
-   0%{top:0em}
-   40%{top:0em}
-   43%{top:-0.9em}
-   46%{top:0em}
-   48%{top:-0.4em}
-   50%{top:0em}
-   100%{top:0em;}
-} */
+
+#deletemeal,
+#canceldelete {
+  display: none;
+}
+
+.add-meal,
+.buttons,
+#deletemeal,
+#canceldelete  {
+	box-shadow: -1px 2px 38px 4px #1564ad;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+  border-radius:5px;
+  display: inline-block;
+	border:1px solid #337bc4;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+  position: relative;
+	font-weight:bold;
+	padding:0.3em 1.2em;
+	text-decoration:none;
+  text-shadow:0px 1px 0px #528ecc;
+  animation:bouncy 5s infinite linear;
+}
+
+#load-defaults{
+  margin-bottom: 20px;
+}
+.add-meal:hover,
+.buttons:hover,
+#mealhide:hover,
+#deletemeal:hover,
+#canceldelete:hover {
+	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
+}
+
+.add-meal:active,
+.buttons:active,
+#mealhide:active,
+#deletemeal:active,
+#canceldelete:active {
+	position:relative;
+	top:1px;
+}
 
 
 .display {
@@ -230,10 +249,6 @@ footer {
 
  
 
-  #clearalltop {
-    display: none;
-  }
-
   header {
     display: none;
   }
@@ -248,62 +263,10 @@ footer {
     height: 100%;
   }
 
-  .small {
-    height: 50px;
-    display: flex;
-    background: #eaeaea;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    background: #3498db;
-  }
-  .searchbutton {
-    display: none;
-  }
-  .minisearch {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-  }
-  .minisearchbutton {
-    width: 100%;
-    display: flex;
-    background: white;
-    border: 1px solid black;
-  }
-  .search {
-    display: none;
-  }
-
   .large {
     display: flex;
     margin-top: 10px;
   }
-}
-.messages {
-  display: none;
-}
-.messages {
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 187px;
-  font-weight: lighter;
-  border: 1px solid black;
-  background: white;
-  width: 200px;
-  text-align: center;
-}
-
-.mealshow {
-  display: flex;
-}
-
-.mealhide,
-.messagehide,
-.hide,
-.hidet {
-  display: none;
 }
 
 .message {
@@ -384,3 +347,4 @@ button:hover,
 #logbutton:hover {
   background: #2ecc71;
 }
+

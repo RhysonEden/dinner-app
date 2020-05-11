@@ -73,7 +73,7 @@ try {
 
 function displayData(post){
   main.append(`<div class="mealsearch"><span class="add-meal-click"><h2><a href="${post.sourceUrl}" target="_blank">${post.title}</a></h2></span>
-  <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><button class="add-meal">Add Meal</button></div>`)
+  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><button class="add-meal">Add Meal</button></div>`)
 
 }
 
@@ -225,8 +225,8 @@ $("#random").on("click", function (event) {
 });
 
 function mealShow() {
-  $(".mealhide").removeClass("mealhide");
-  $(".mealhide").addClass("mealshow");
+  $("#deletemeal").show();
+  $("#canceldelete").show();
   $("#clearalltop").show();
   $("#deletemeal").show()
   $("#canceldelete").show();
@@ -234,8 +234,8 @@ function mealShow() {
 }
 
 function mealHide(){
-  $(".mealhide").removeClass("mealshow")
-  $(".mealhide").addClass("mealhide")
+  $("#deletemeal").hide();
+  $("#canceldelete").hide();
   $("#deletemeal").hide()
   $("#clearalltop").hide();
   $("#canceldelete").hide();
@@ -258,6 +258,7 @@ function bootStrap() {
     meal = meals;
   } else {
     retrieveData();
+    mealHide();
   }
   shuffle(meal);
   storeData();
