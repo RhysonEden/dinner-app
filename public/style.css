@@ -1,30 +1,13 @@
 h4 {
   text-align: center;
 }
-/* 
-body {
-  background-color: blue;
-} */
 
 #deletemeal {
   display: hide;
 }
 
-#red {
-  color: white;
-}
 
-/* @media screen and (max-width: 600px) {
-  .input-form {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  #input-message {
-    border: 1px solid black;
-  }
-} */
+
 
 /* Paste of CSS */
 body {
@@ -45,9 +28,7 @@ body {
   padding-bottom: 10px;
 }
 
-#descrip {
-  font-weight: bold;
-}
+
 .minisearch {
   display: none;
 }
@@ -61,9 +42,7 @@ body {
 #hide {
   display: none;
 }
-.minisearchbutton {
-  display: none;
-}
+
 .loggedInAds,
 .ads {
   display: flex;
@@ -130,6 +109,8 @@ body {
   flex-wrap: wrap;
   overflow: hidden;
   background: #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 header,
@@ -173,6 +154,40 @@ footer {
   display: none;
 }
 
+.buttons,
+#mealhide,
+#deletemeal,
+#canceldelete {
+  border-radius: 2em;
+  border: 1px solid black;
+  background-color: white;
+  padding:0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  position: relative;
+  animation:bouncy 5s infinite linear;
+}
+
+
+@keyframes bouncy {
+  0%{top:0em}
+  40%{top:0em}
+  43%{top:-0.9em}
+  46%{top:0em}
+  48%{top:-0.4em}
+  50%{top:0em}
+  100%{top:0em}
+}
+/* @keyframes bouncy {
+   0%{top:0em}
+   40%{top:0em}
+   43%{top:-0.9em}
+   46%{top:0em}
+   48%{top:-0.4em}
+   50%{top:0em}
+   100%{top:0em;}
+} */
+
+
 .display {
   border: 1px solid black;
   background-color: white;
@@ -197,11 +212,22 @@ footer {
     display: flex;
   }
   
+#start-search {
+  /* margin-left: 2px;
+  left: -50px; */
+  position: relative;
+}
 
-  button {
-    border: 1px solid black;
-    background-color: white;
-  }
+.search-terms{
+  /* padding-left: 50px; */
+  position: relative;
+  left: -50px;  
+}
+  /* button {
+    border-radius: 2em ;
+  } */
+
+ 
 
   #clearalltop {
     display: none;
@@ -251,6 +277,7 @@ footer {
 
   .large {
     display: flex;
+    margin-top: 10px;
   }
 }
 .messages {
