@@ -51,6 +51,7 @@ let ideas;
 
 $("#start-search").on("click", async function(event){
   event.preventDefault();
+  mealHide();
   main.empty();
   searchTerm = $(".search-terms").val()
   getSearch();
@@ -73,36 +74,9 @@ try {
 
 function displayData(post){
   main.append(`<div class="mealsearch"><span class="add-meal-click"><h2><a href="${post.sourceUrl}" target="_blank">${post.title}</a></h2></span>
-  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><button class="add-meal">Add Meal</button></div>`)
+  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><br> <br><button class="add-meal">Add Meal</button></div>`)
 
 }
-
-function displayIngredients(info){
-  side.empty();
-
-  console.log(info.strMeasure1)
-  side.append(`
-  ${info.strMeasure1}${info.strIngredient1}<br>${info.strMeasure2}${info.strIngredient2}<br>
-  ${info.strMeasure3}${info.strIngredient3}<br>${info.strMeasure4}${info.strIngredient4}<br>
-  ${info.strMeasure5}${info.strIngredient5}<br>${info.strMeasure6}${info.strIngredient6}<br>
-  ${info.strMeasure7}${info.strIngredient7}<br>${info.strMeasure8}${info.strIngredient8}<br>
-  ${info.strMeasure9}${info.strIngredient9}<br>${info.strMeasure10}${info.strIngredient10}<br>
-  ${info.strMeasure11}${info.strIngredient11}<br>${info.strMeasure12}${info.strIngredient12}<br>
-  ${info.strMeasure13}${info.strIngredient13}<br>${info.strMeasure14}${info.strIngredient14}<br>
-  ${info.strMeasure15}${info.strIngredient15}<br>${info.strMeasure16}${info.strIngredient16}<br>
-  ${info.strMeasure17}${info.strIngredient17}<br>${info.strMeasure18}${info.strIngredient18}<br>
-  ${info.strMeasure19}${info.strIngredient19}<br>${info.strMeasure20}${info.strIngredient20}<br>`)
-};
-
-// <a href="${post.strSource}" target="_blank" >Recipe</a>
-
-$(document).on('click', '.show-ingredients', function(event){
-  event.preventDefault();
-  side.empty();
-  info.meals.forEach(info => {
-    displayIngredients(info)
-  })
-})
 
 $("#load-defaults").on("click", function (event) {
   event.preventDefault();
@@ -125,6 +99,7 @@ $(document).on('click', '.add-meal', function() {
 
 
 function shuffle(array) {
+  mealHide();
   let currentIndex = meal.length,
     temporaryValue,
     randomIndex;
@@ -147,6 +122,7 @@ $("#canceldelete").on("click", function () {
 
 $(".clearall").on("click", function (event) {
   event.preventDefault();
+  mealHide();
   let r = confirm(
     "Press ok to clear everthing, or cancel to keep current settings"
   );
@@ -201,10 +177,12 @@ $("#messagesend").on("click", function (event) {
   $("#input-message").val(" ");
   storeData();
   shuffle(meal);
+  mealHide();
 });
 
 $("#random").on("click", function (event) {
   event.preventDefault();
+  mealHide();
   retrieveData();
   x = meal;
   main.empty();
@@ -227,19 +205,19 @@ $("#random").on("click", function (event) {
 function mealShow() {
   $("#deletemeal").show();
   $("#canceldelete").show();
-  $("#clearalltop").show();
-  $("#deletemeal").show()
-  $("#canceldelete").show();
-  $("#random").hide();
+  // $("#clearalltop").show();
+  // $("#deletemeal").show()
+  // $("#canceldelete").show();
+  // $("#random").hide();
 }
 
 function mealHide(){
   $("#deletemeal").hide();
   $("#canceldelete").hide();
-  $("#deletemeal").hide()
-  $("#clearalltop").hide();
-  $("#canceldelete").hide();
-  $("#random").show();
+  // $("#deletemeal").hide()
+  // $("#clearalltop").hide();
+  // $("#canceldelete").hide();
+  // $("#random").show();
 }
 function storeData() {
   localStorage.setItem("meals", JSON.stringify(meal));
