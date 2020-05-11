@@ -2,7 +2,9 @@ let mealJson = JSON.parse(localStorage.getItem("meals"));
 
 let index = [];
 
-const BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
+const BASE_URL = "https://api.spoonacular.com/recipes/"
+
+let searchTerm;
 
 let meals = [];
 
@@ -42,47 +44,66 @@ let defaultz = [
 
 let main = $(".main-list");
 
+let side = $(".large");
+
 let ideas;
 
 
 $("#start-search").on("click", async function(event){
   event.preventDefault();
   main.empty();
-  let searchTerm = $(".search-terms").val()
-  let url = `${BASE_URL}/search.php?s=${searchTerm}`
-  try {
-    let response = await fetch(url),
+  searchTerm = $(".search-terms").val()
+  getSearch();
+})
+
+async function getSearch(){
+try {
+    let response = await fetch(`/search?searchTerm=${searchTerm}`),
     data = await response.json();
     console.log(data);
-    data.meals.forEach(post => {
+    info = data
+    data.results.results.forEach(post => {
       displayData(post);
     })
   } catch (error) {
     console.log(error);
   }
   $(".search-terms").val("");
-});
+};
 
 function displayData(post){
-  main.append(`<div class="mealsearch"><span class="add-meal-click"><h2>${post.strMeal}</h2></span>${post.strInstructions}<br><br><br>
-  '<br><button class="add-meal">Add Meal</button></div>`)
+  main.append(`<div class="mealsearch"><span class="add-meal-click"><h2><a href="${post.sourceUrl}" target="_blank">${post.title}</a></h2></span>
+  <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><button class="add-meal">Add Meal</button></div>`)
 
 }
 
-// ${
-//   post.strMeasure1 === "" ? "img/standin.jpg" : d.image
-// }
-// ${post.strMeasure1}${post.strIngredient1}<br>${post.strMeasure2}${post.strIngredient2}<br>
-// ${post.strMeasure3}${post.strIngredient3}<br>${post.strMeasure4}${post.strIngredient4}<br>
-// ${post.strMeasure5}${post.strIngredient5}<br>${post.strMeasure6}${post.strIngredient6}<br>
-// ${post.strMeasure7}${post.strIngredient7}<br>${post.strMeasure8}${post.strIngredient8}<br>
-// ${post.strMeasure9}${post.strIngredient9}<br>${post.strMeasure10}${post.strIngredient10}<br>
-// ${post.strMeasure11}${post.strIngredient11}<br>${post.strMeasure12}${post.strIngredient12}<br>
-// ${post.strMeasure13}${post.strIngredient13}<br>${post.strMeasure14}${post.strIngredient14}<br>
-// ${post.strMeasure15}${post.strIngredient15}<br>${post.strMeasure16}${post.strIngredient16}<br>
-// ${post.strMeasure17}${post.strIngredient17}<br>${post.strMeasure18}${post.strIngredient18}<br>
-// ${post.strMeasure19}${post.strIngredient19}<br>${post.strMeasure20}${post.strIngredient20}<br>
+function displayIngredients(info){
+  side.empty();
+
+  console.log(info.strMeasure1)
+  side.append(`
+  ${info.strMeasure1}${info.strIngredient1}<br>${info.strMeasure2}${info.strIngredient2}<br>
+  ${info.strMeasure3}${info.strIngredient3}<br>${info.strMeasure4}${info.strIngredient4}<br>
+  ${info.strMeasure5}${info.strIngredient5}<br>${info.strMeasure6}${info.strIngredient6}<br>
+  ${info.strMeasure7}${info.strIngredient7}<br>${info.strMeasure8}${info.strIngredient8}<br>
+  ${info.strMeasure9}${info.strIngredient9}<br>${info.strMeasure10}${info.strIngredient10}<br>
+  ${info.strMeasure11}${info.strIngredient11}<br>${info.strMeasure12}${info.strIngredient12}<br>
+  ${info.strMeasure13}${info.strIngredient13}<br>${info.strMeasure14}${info.strIngredient14}<br>
+  ${info.strMeasure15}${info.strIngredient15}<br>${info.strMeasure16}${info.strIngredient16}<br>
+  ${info.strMeasure17}${info.strIngredient17}<br>${info.strMeasure18}${info.strIngredient18}<br>
+  ${info.strMeasure19}${info.strIngredient19}<br>${info.strMeasure20}${info.strIngredient20}<br>`)
+};
+
 // <a href="${post.strSource}" target="_blank" >Recipe</a>
+
+$(document).on('click', '.show-ingredients', function(event){
+  event.preventDefault();
+  side.empty();
+  info.meals.forEach(info => {
+    displayIngredients(info)
+  })
+})
+
 $("#load-defaults").on("click", function (event) {
   event.preventDefault();
   localStorage.clear();
