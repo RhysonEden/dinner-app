@@ -60,12 +60,13 @@ $("#start-search").on("click", async function(event){
   main.empty();
   searchTerm = $(".search-terms").val()
   getSearch();
+  $(".search-terms").val( "Search...")
 })
 
 
 //Front-End To get Wine information
 async function getWine(){
-let wineTerm = $(".search-terms").val();
+let wineTerm = searchTerm;
 console.log(wineTerm)
 try {
   let response = await fetch(`/pairing?wineTerm=${wineTerm}`),

@@ -35,6 +35,7 @@ server.get('/pairing', async (req, res) => {
   try {
     const { wineTerm } = req.query;
     const URL = `${BASE_WINE}/pairing?apiKey=${API_KEY}&food=${wineTerm}`
+    console.log(URL)
     const { data } = await axios.get(URL);
     res.send({ results: data });
   } catch (error) {
