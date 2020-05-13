@@ -2,11 +2,17 @@ let mealJson = JSON.parse(localStorage.getItem("meals"));
 
 let index = [];
 
-const BASE_URL = "https://api.spoonacular.com/recipes/"
-
 let searchTerm;
 
-let meals = [];
+let winez = [];
+
+let modal = document.getElementById("myModal");
+
+let btn = $("#view-wine")
+
+let span = document.getElementsByClassName("close")[0];
+
+let wine = $("#wine-place");
 
 let meal = [
   "Tacos",
@@ -48,7 +54,6 @@ let side = $(".large");
 
 let ideas;
 
-
 $("#start-search").on("click", async function(event){
   event.preventDefault();
   mealHide();
@@ -56,6 +61,33 @@ $("#start-search").on("click", async function(event){
   searchTerm = $(".search-terms").val()
   getSearch();
 })
+
+
+//Front-End To get Wine information
+async function getWine(){
+let wineTerm = $(".search-terms").val();
+console.log(wineTerm)
+try {
+  let response = await fetch(`/pairing?wineTerm=${wineTerm}`),
+  data = await response.json();
+  console.log(data);
+  
+  winez = data.results.pairingText;
+  displayWine(winez)
+} catch (error) {
+  console.log(error);
+}
+};
+
+function displayWine(winez){
+  console.log(winez)
+  modalOpen()
+  $("#wine-place").append(`${winez}`)
+}
+
+$(document).on('click', '#view-wine', function() {
+  getWine();
+});
 
 async function getSearch(){
 try {
@@ -69,12 +101,12 @@ try {
   } catch (error) {
     console.log(error);
   }
-  $(".search-terms").val("");
+  // $(".search-terms").val("");
 };
 
 function displayData(post){
   main.append(`<div class="mealsearch"><span class="add-meal-click"><h2><a href="${post.sourceUrl}" target="_blank">${post.title}</a></h2></span>
-  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><br> <br><button class="add-meal">Add Meal</button></div>`)
+  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><br> <br><button id="view-wine">View Wine Pairing</button><br><br><button class="add-meal">Add Meal</button></div>`)
 
 }
 
@@ -95,8 +127,6 @@ $(document).on('click', '.add-meal', function() {
   meal.push(mealAdd);
   console.log("complete")
 });
-
-
 
 function shuffle(array) {
   mealHide();
@@ -168,8 +198,6 @@ $(document).ready(function () {
   });
 });
 
-//testing code
-
 $("#messagesend").on("click", function (event) {
   event.preventDefault();
   let newMeal = $("#input-message").val();
@@ -205,19 +233,11 @@ $("#random").on("click", function (event) {
 function mealShow() {
   $("#deletemeal").show();
   $("#canceldelete").show();
-  // $("#clearalltop").show();
-  // $("#deletemeal").show()
-  // $("#canceldelete").show();
-  // $("#random").hide();
 }
 
 function mealHide(){
   $("#deletemeal").hide();
   $("#canceldelete").hide();
-  // $("#deletemeal").hide()
-  // $("#clearalltop").hide();
-  // $("#canceldelete").hide();
-  // $("#random").show();
 }
 function storeData() {
   localStorage.setItem("meals", JSON.stringify(meal));
@@ -228,7 +248,6 @@ function retrieveData() {
 }
 
 function bootStrap() {
-  //   retrieveData();
   if (
     localStorage.getItem("meals") === null ||
     localStorage.getItem("meals") === false
@@ -240,6 +259,28 @@ function bootStrap() {
   }
   shuffle(meal);
   storeData();
+}
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+   console.log("clicked")
+  modal.style.display = "block";
+}
+
+function modalOpen(){
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 
 bootStrap();
