@@ -96,8 +96,15 @@ try {
 
 function displayWine(winez){
   console.log(winez)
+  if (winez === undefined){
+    $(".wine-clear").text(" ");
+    modalOpen()
+    $("#wine-place").append(`I'm sorry, we weren't able to find any pairings.`)
+  } else {
+  $(".wine-clear").text(" ");
   modalOpen()
   $("#wine-place").append(`${winez}`)
+}
 }
 
 $(document).on('click', '#view-wine', function() {
@@ -289,12 +296,14 @@ function modalOpen(){
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
+  $(".wine-clear").text(" ");
   modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
+    $(".wine-clear").text(" ");
     modal.style.display = "none";
   }
 }
