@@ -63,6 +63,20 @@ $("#start-search").on("click", async function(event){
   $(".search-terms").val( "Search...")
 })
 
+async function foodTrivia(){
+  try {
+    let response = await fetch(`/trivia`),
+    data = await response.json();
+    console.log(data);
+    trivia = data
+    console.log(trivia)
+
+    main.append(`Food fact! : ${trivia.results.text}`)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 //Front-End To get Wine information
 async function getWine(){
@@ -258,6 +272,7 @@ function bootStrap() {
     retrieveData();
     mealHide();
   }
+  foodTrivia();
   shuffle(meal);
   storeData();
 }

@@ -44,6 +44,19 @@ server.get('/pairing', async (req, res) => {
   }
 })
 
+server.get('/trivia', async (req, res) => {
+  try {
+    // const { wineTerm } = req.query;
+    const URL = `https://api.spoonacular.com/food/trivia/random?apiKey=${API_KEY}`
+    console.log(URL)
+    const { data } = await axios.get(URL);
+    res.send({ results: data });
+  } catch (error) {
+    console.log(error)
+    res.send({ error });
+  }
+})
+
 server.listen(PORT, () => {
   console.log("I am listening...");
 });
