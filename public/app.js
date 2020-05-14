@@ -54,6 +54,8 @@ let side = $(".large");
 
 let ideas;
 
+// $(".input-main").hide();
+
 $("#start-search").on("click", async function(event){
   event.preventDefault();
   mealHide();
@@ -71,7 +73,7 @@ async function foodTrivia(){
     trivia = data
     console.log(trivia)
 
-    main.append(`Food fact! : ${trivia.results.text}`)
+    main.append(`<h4>Food fact! : <br> ${trivia.results.text}</h4>`)
   } catch (error) {
     console.log(error);
   }
@@ -279,6 +281,7 @@ function bootStrap() {
     retrieveData();
     mealHide();
   }
+  
   foodTrivia();
   shuffle(meal);
   storeData();
