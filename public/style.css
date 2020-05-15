@@ -18,6 +18,8 @@ body {
   align-items: center;
   background: white;
   border: 1px solid black;
+  /* border-top: 1px solid black;
+  border-bottom: 1px solid black; */
   padding-bottom: 10px;
   width: 643px;
 }

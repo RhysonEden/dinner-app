@@ -6,13 +6,32 @@ let searchTerm;
 
 let winez = [];
 
+// let meals;
+
 let modal = document.getElementById("myModal");
 
-let btn = $("#view-wine")
+let btn = $("#view-wine");
 
 let span = document.getElementsByClassName("close")[0];
 
 let wine = $("#wine-place");
+
+let meals = [
+  "Tacos",
+  "Perogies",
+  "Cheese Hamburger Helper",
+  "Mac and Cheese",
+  "Steak",
+  "Hamburgers",
+  "Pork Chops",
+  "Pizza",
+  "Beer Braised Chicken",
+  "Breakfast for Dinner",
+  "Grilled Pork Tenderloin",
+  "Spaghetti Carbonara",
+  "Meatloaf",
+  "Pot Roast",
+];
 
 let meal = [
   "Tacos",
@@ -56,82 +75,79 @@ let ideas;
 
 // $(".input-main").hide();
 
-$("#start-search").on("click", async function(event){
+$("#start-search").on("click", async function (event) {
   event.preventDefault();
   mealHide();
   main.empty();
-  searchTerm = $(".search-terms").val()
+  searchTerm = $(".search-terms").val();
   getSearch();
-  $(".search-terms").val( "Search...")
-})
+});
 
-async function foodTrivia(){
+async function foodTrivia() {
   try {
     let response = await fetch(`/trivia`),
-    data = await response.json();
+      data = await response.json();
     console.log(data);
-    trivia = data
-    console.log(trivia)
+    trivia = data;
+    console.log(trivia);
 
-    main.append(`<h4>Food fact! : <br> ${trivia.results.text}</h4>`)
+    main.append(`<h4>Food fact! : <br> ${trivia.results.text}</h4>`);
   } catch (error) {
     console.log(error);
   }
 }
 
-
 //Front-End To get Wine information
-async function getWine(){
-let wineTerm = searchTerm;
-console.log(wineTerm)
-try {
-  let response = await fetch(`/pairing?wineTerm=${wineTerm}`),
-  data = await response.json();
-  console.log(data);
-  
-  winez = data.results.pairingText;
-  displayWine(winez)
-} catch (error) {
-  console.log(error);
-}
-};
+async function getWine() {
+  let wineTerm = searchTerm;
+  console.log(wineTerm);
+  try {
+    let response = await fetch(`/pairing?wineTerm=${wineTerm}`),
+      data = await response.json();
+    console.log(data);
 
-function displayWine(winez){
-  console.log(winez)
-  if (winez === undefined){
+    winez = data.results.pairingText;
+    displayWine(winez);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function displayWine(winez) {
+  console.log(winez);
+  if (winez === undefined) {
     $(".wine-clear").text(" ");
-    modalOpen()
-    $("#wine-place").append(`I'm sorry, we weren't able to find any pairings.`)
+    modalOpen();
+    $("#wine-place").append(`I'm sorry, we weren't able to find any pairings.`);
   } else {
-  $(".wine-clear").text(" ");
-  modalOpen()
-  $("#wine-place").append(`${winez}`)
-}
+    $(".wine-clear").text(" ");
+    modalOpen();
+    $("#wine-place").append(`${winez}`);
+  }
 }
 
-$(document).on('click', '#view-wine', function() {
+$(document).on("click", "#view-wine", function () {
   getWine();
 });
 
-async function getSearch(){
-try {
+async function getSearch() {
+  try {
     let response = await fetch(`/search?searchTerm=${searchTerm}`),
-    data = await response.json();
+      data = await response.json();
     console.log(data);
-    info = data
-    data.results.results.forEach(post => {
+    info = data;
+    data.results.results.forEach((post) => {
       displayData(post);
-    })
+    });
   } catch (error) {
     console.log(error);
   }
   // $(".search-terms").val("");
-};
+}
 
-function displayData(post){
+function displayData(post) {
   main.append(`<div class="mealsearch"><span class="add-meal-click"><h2><a href="${post.sourceUrl}" target="_blank">${post.title}</a></h2></span>
-  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><br> <br><button id="view-wine">View Wine Pairing</button><br><br><button class="add-meal">Add Meal</button></div>`)
-
+  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><img src="https://spoonacular.com/recipeImages/${post.image}" height="250" width="250"><br> <br><button id="view-wine">View Wine Pairing</button><br><br><button class="add-meal">Add Meal</button></div>`);
 }
 
 $("#load-defaults").on("click", function (event) {
@@ -142,14 +158,14 @@ $("#load-defaults").on("click", function (event) {
   alert("Defaults Now Loaded");
 });
 
-$(document).on('click', '.add-meal', function() {
-  console.log("clicky")
-  let newMeal = $(this).closest('.mealsearch').find('.add-meal-click')
+$(document).on("click", ".add-meal", function () {
+  console.log("clicky");
+  let newMeal = $(this).closest(".mealsearch").find(".add-meal-click");
   let mealAdd = newMeal.text();
 
-  console.log(mealAdd)
+  console.log(mealAdd);
   meal.push(mealAdd);
-  console.log("complete")
+  console.log("complete");
 });
 
 function shuffle(array) {
@@ -239,11 +255,13 @@ $("#random").on("click", function (event) {
   x = meal;
   main.empty();
   shuffle(x);
-  if (`${x[0]}` === "undefined"){
-    main.append(`<div class="display">No meals entered, please enter a meal or load default meals</div>`)
+  if (`${x[0]}` === "undefined") {
+    main.append(
+      `<div class="display">No meals entered, please enter a meal or load default meals</div>`
+    );
   } else {
-  main.append(
-    `<div class="display"><div id="d1">
+    main.append(
+      `<div class="display"><div id="d1">
            Dinner Day 1 = ${x[0]} <br></div>
      <div id="d2">Dinner Day 2 = ${x[1]}<br></div>
      <div id="d3">Dinner Day 3 = ${x[2]}<br></div>
@@ -251,7 +269,8 @@ $("#random").on("click", function (event) {
      <div id="d5">Dinner Day 5 = ${x[4]}<br></div>
      <div id="d6">Dinner Day 6 = ${x[5]}<br></div>
      <div id="d7">Dinner Day 7 = ${x[6]}</div></div> `
-  )};
+    );
+  }
 });
 
 function mealShow() {
@@ -259,7 +278,7 @@ function mealShow() {
   $("#canceldelete").show();
 }
 
-function mealHide(){
+function mealHide() {
   $("#deletemeal").hide();
   $("#canceldelete").hide();
 }
@@ -281,34 +300,38 @@ function bootStrap() {
     retrieveData();
     mealHide();
   }
-  
+
   foodTrivia();
   shuffle(meal);
   storeData();
 }
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
-   console.log("clicked")
+btn.onclick = function () {
+  console.log("clicked");
+  modal.style.display = "block";
+};
+
+function modalOpen() {
   modal.style.display = "block";
 }
 
-function modalOpen(){
-  modal.style.display = "block";
-}
-
+$("#random-api-meals").on("click", function (event) {
+  event.preventDefault();
+  console.log("clicky");
+});
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   $(".wine-clear").text(" ");
   modal.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     $(".wine-clear").text(" ");
     modal.style.display = "none";
   }
-}
+};
 
 bootStrap();
