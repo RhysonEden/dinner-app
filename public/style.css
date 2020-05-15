@@ -265,7 +265,9 @@ footer {
     position: relative;
     left: -50px;
   }
-
+  .mealsearch {
+    width: 375;
+  }
   .search-terms {
     /* padding-left: 50px; */
     position: relative;
