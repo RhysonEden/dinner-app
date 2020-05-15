@@ -6,8 +6,6 @@ let searchTerm;
 
 let winez = [];
 
-// let meals;
-
 let modal = document.getElementById("myModal");
 
 let btn = $("#view-wine");
@@ -143,6 +141,26 @@ async function getSearch() {
     console.log(error);
   }
   // $(".search-terms").val("");
+}
+
+async function randomApiMeals() {
+  try {
+    let response = await fetch(`/mealplanner?mealPlanner=week`),
+      data = await response.json();
+    console.log(data);
+    main.empty();
+    data.results.meals.forEach((post) => {
+      renderApiMeals(post);
+      console.log(post);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function renderApiMeals(post) {
+  main.append(`<div class="mealsearch"><span class="add-meal-click"><h2><a href="${post.sourceUrl}" target="_blank">${post.title}</a></h2></span>
+  <h4>Ready in: ${post.readyInMinutes} minutes <br> Servings: ${post.servings} </h4> <br> <br><br><br><button class="add-meal">Add Meal</button></div>`);
 }
 
 function displayData(post) {
@@ -318,7 +336,7 @@ function modalOpen() {
 
 $("#random-api-meals").on("click", function (event) {
   event.preventDefault();
-  console.log("clicky");
+  randomApiMeals();
 });
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {

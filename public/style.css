@@ -12,7 +12,7 @@ body {
   background: #1da598;
 }
 
-.mealsearch{
+.mealsearch {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,8 +34,8 @@ body {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
@@ -152,15 +152,33 @@ footer {
 }
 
 @keyframes bouncy {
-  0%{top:0em}
-  40%{top:0em}
-  43%{top:-0.9em}
-  46%{top:0em}
-  48%{top:-0.4em}
-  50%{top:0em}
-  75%{top:-1.2em}
-  78%{top:0em}
-  100%{top:0em}
+  0% {
+    top: 0em;
+  }
+  40% {
+    top: 0em;
+  }
+  43% {
+    top: -0.9em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: -0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  75% {
+    top: -1.2em;
+  }
+  78% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
+  }
 }
 
 #deletemeal,
@@ -172,28 +190,31 @@ footer {
 .add-meal,
 .buttons,
 #deletemeal,
-#canceldelete  {
-	box-shadow: -1px 2px 38px 4px #1564ad;
-	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-	background-color:#79bbff;
-  border-radius:5px;
+#canceldelete {
+  box-shadow: -1px 2px 38px 4px #1564ad;
+  background: linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+  background-color: #79bbff;
+  border-radius: 5px;
   display: inline-block;
-	border:1px solid #337bc4;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
+  border: 1px solid #337bc4;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
   position: relative;
-	font-weight:bold;
-	padding:0.3em 1.2em;
-	text-decoration:none;
-  text-shadow:0px 1px 0px #528ecc;
+  font-weight: bold;
+  padding: 0.3em 1.2em;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #528ecc;
   /* animation:bouncy 5s infinite linear; */
+}
+
+#random {
+  margin-right: 20px;
 }
 
 #load-defaults,
 #random,
-#display-meals
-{
+#display-meals {
   margin-bottom: 20px;
 }
 .add-meal:hover,
@@ -201,8 +222,8 @@ footer {
 #mealhide:hover,
 #deletemeal:hover,
 #canceldelete:hover {
-	background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
-	background-color:#378de5;
+  background: linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+  background-color: #378de5;
 }
 
 .add-meal:active,
@@ -210,10 +231,9 @@ footer {
 #mealhide:active,
 #deletemeal:active,
 #canceldelete:active {
-	position:relative;
-	top:1px;
+  position: relative;
+  top: 1px;
 }
-
 
 .display {
   border: 1px solid black;
@@ -227,7 +247,6 @@ footer {
     justify-content: center;
   }
 
-
   header {
     width: 100%;
     text-align: center;
@@ -239,31 +258,28 @@ footer {
   #clearallbottom {
     display: flex;
   }
-  
-#start-search {
-  /* margin-left: 2px;
-  left: -50px; */
-  position: relative;
-  left: -50px;
-}
 
-.search-terms{
-  /* padding-left: 50px; */
-  position: relative;
-  left: -60px;  
-}
+  #start-search {
+    /* margin-left: 2px;
+  left: -50px; */
+    position: relative;
+    left: -50px;
+  }
+
+  .search-terms {
+    /* padding-left: 50px; */
+    position: relative;
+    left: -60px;
+  }
   /* button {
     border-radius: 2em ;
   } */
-
- 
 
   header {
     display: none;
   }
 
   footer {
-
     align-content: center;
     justify-content: center;
   }
@@ -356,4 +372,3 @@ button:hover,
 #logbutton:hover {
   background: #2ecc71;
 }
-
