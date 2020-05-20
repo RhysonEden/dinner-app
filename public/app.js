@@ -4,7 +4,11 @@ let index = [];
 
 let searchTerm;
 
+let elem;
+
 let winez = [];
+
+let checkedValue = $(".messageCheckbox:checked");
 
 let modal = document.getElementById("myModal");
 
@@ -13,6 +17,8 @@ let btn = $("#view-wine");
 let span = document.getElementsByClassName("close")[0];
 
 let wine = $("#wine-place");
+
+let clean = $(".main-list").empty();
 
 let meals = [
   "Tacos",
@@ -134,6 +140,7 @@ async function getSearch() {
       data = await response.json();
     console.log(data);
     info = data;
+    $(".main-list").empty();
     data.results.results.forEach((post) => {
       displayData(post);
     });
@@ -183,6 +190,8 @@ $(document).on("click", ".add-meal", function () {
 
   console.log(mealAdd);
   meal.push(mealAdd);
+  meals.push(mealAdd);
+  storeData();
   console.log("complete");
 });
 
@@ -233,11 +242,22 @@ $("#display-meals").on("click", function (event) {
 
 function Function1(currentValue, index) {
   main.append(
-    `<div id="meals"><input type="checkbox"><u>${
+    `<div id="meals"><input type="checkbox" class="messageCheckbox">${
       1 + index
-    }.  ${currentValue}<div id="hide">${index}</div></u></div>`
+    }. <span id="meal-name">${currentValue}</span><div id="hide">${index}</div></div>`
   );
 }
+
+$("#searchmeal").on("click", function () {
+  console.log("search clicked");
+  // store closest in searchTerm, then call getSearch
+  // elem = checkedValue.closest().find("#meal-name").text();
+  searchTerm = $(".messageCheckbox:checked")
+    .closest("#meals")
+    .find("#meal-name")
+    .text();
+  getSearch();
+});
 
 $(document).ready(function () {
   $("#deletemeal").on("click", function () {
@@ -294,11 +314,13 @@ $("#random").on("click", function (event) {
 function mealShow() {
   $("#deletemeal").show();
   $("#canceldelete").show();
+  $("#searchmeal").show();
 }
 
 function mealHide() {
   $("#deletemeal").hide();
   $("#canceldelete").hide();
+  $("#searchmeal").hide();
 }
 function storeData() {
   localStorage.setItem("meals", JSON.stringify(meal));

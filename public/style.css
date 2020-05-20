@@ -181,11 +181,17 @@ footer {
   }
 }
 
+#meals {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
 #deletemeal,
 #canceldelete {
   display: none;
 }
-
+.mealhide,
 #view-wine,
 .add-meal,
 .buttons,
@@ -205,6 +211,8 @@ footer {
   padding: 0.3em 1.2em;
   text-decoration: none;
   text-shadow: 0px 1px 0px #528ecc;
+  margin-top: 5px;
+  margin-bottom: 5px;
   /* animation:bouncy 5s infinite linear; */
 }
 
