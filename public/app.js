@@ -20,22 +20,7 @@ let wine = $("#wine-place");
 
 let clean = $(".main-list").empty();
 
-let meals = [
-  "Tacos",
-  "Perogies",
-  "Cheese Hamburger Helper",
-  "Mac and Cheese",
-  "Steak",
-  "Hamburgers",
-  "Pork Chops",
-  "Pizza",
-  "Beer Braised Chicken",
-  "Breakfast for Dinner",
-  "Grilled Pork Tenderloin",
-  "Spaghetti Carbonara",
-  "Meatloaf",
-  "Pot Roast",
-];
+let meals = [];
 
 let meal = [
   "Tacos",
@@ -250,8 +235,6 @@ function Function1(currentValue, index) {
 
 $("#searchmeal").on("click", function () {
   console.log("search clicked");
-  // store closest in searchTerm, then call getSearch
-  // elem = checkedValue.closest().find("#meal-name").text();
   searchTerm = $(".messageCheckbox:checked")
     .closest("#meals")
     .find("#meal-name")
@@ -270,6 +253,7 @@ $(document).ready(function () {
           meal.splice(idx, 1);
           main.empty();
           meal.forEach(Function1);
+          console.log("ran");
         }
       });
     }
@@ -335,7 +319,7 @@ function bootStrap() {
     localStorage.getItem("meals") === null ||
     localStorage.getItem("meals") === false
   ) {
-    meal = meals;
+    meals = meal;
   } else {
     retrieveData();
     mealHide();
@@ -346,7 +330,6 @@ function bootStrap() {
   storeData();
 }
 
-// When the user clicks on the button, open the modal
 btn.onclick = function () {
   console.log("clicked");
   modal.style.display = "block";
@@ -366,7 +349,6 @@ span.onclick = function () {
   modal.style.display = "none";
 };
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
     $(".wine-clear").text(" ");
